@@ -1,0 +1,11 @@
+[data, Fs] = audioread('yonce.wav');
+y = data(:,1);
+x = (0:length(data)-1)/Fs;
+y2 = fft(y(1:44100))';
+x2 = x(1:44100);
+plot(x2,y2,'bo');
+figure(2);
+plot((1:length(y))/Fs,y);
+power = abs(y(1:floor(length(y)/2))).^2;
+nyquist = 1/2;
+freq = (1:length(y)/2)/(length(y)/2)*nyquist;
